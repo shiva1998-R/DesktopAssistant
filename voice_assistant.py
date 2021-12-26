@@ -43,6 +43,7 @@ def command():
             except:
                 speak("Try Again")
 
+
 def clickVoiceAssistantButton():
     def VoiceAssistantButtonActions():
         while True:
@@ -110,8 +111,9 @@ def clickVoiceAssistantButton():
                 break
             else:
                 speak("I don't understand what you are saying")
-    threading.Thread(target=VoiceAssistantButtonActions).start()
-
+    t=threading.Thread(target=VoiceAssistantButtonActions)
+    t.daemon=True
+    t.start()
 
 def clickOpenApplicationsButton():
 
@@ -119,12 +121,13 @@ def clickOpenApplicationsButton():
     def OpenAppsActions():
         import subprocess
         subprocess.Popen(r"C:\Program Files (x86)\Everything\Everything.exe")
-        subprocess.Popen(r"C:\Users\Siva\AppData\Local\Programs\Microsoft VS Code\Code.exe")
-        subprocess.Popen(r"D:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin\pycharm64.exe")
-        subprocess.Popen(r"C:\Program Files (x86)\Notepad++\notepad++.exe")
-        subprocess.Popen(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
-    threading.Thread(target=OpenAppsActions).start()
-
+        # subprocess.Popen(r"C:\Users\Siva\AppData\Local\Programs\Microsoft VS Code\Code.exe")
+        # subprocess.Popen(r"D:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin\pycharm64.exe")
+        # subprocess.Popen(r"C:\Program Files (x86)\Notepad++\notepad++.exe")
+        # subprocess.Popen(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
+    t=threading.Thread(target=OpenAppsActions)
+    t.daemon = True
+    t.start()
 
 
 
