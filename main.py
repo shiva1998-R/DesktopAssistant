@@ -42,7 +42,7 @@ def command():
         with sr.Microphone() as source:
             r.adjust_for_ambient_noise(source,duration=2)
             speak('Alexa: Listening...')
-            audio=r.listen(source,phrase_time_limit=5)
+            audio=r.listen(source,phrase_time_limit=10)
             try:
                 query = r.recognize_google(audio)
                 speak(f"You said: {query}")
@@ -154,16 +154,11 @@ def clickMusicPlayerButton():
     t.start()
 
 
-
-
-
-
-
 # Information to ask when installing app for first time 
 # - C://Desktop Assistant/music_folder_location.txt
 # C://Desktop Assistant/app_exe_locations.txt
-if os.path.isdir(r'C://Desktop Assistant'):
-    shutil.rmtree(r'C://Desktop Assistant', ignore_errors=True)
+# if os.path.isdir(r'C://Desktop Assistant'):
+#     shutil.rmtree(r'C://Desktop Assistant', ignore_errors=True)
 
 if not os.path.isdir(r'C://Desktop Assistant'):
     os.mkdir(r"C://Desktop Assistant")
