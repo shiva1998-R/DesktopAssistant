@@ -99,7 +99,8 @@ def clickVoiceAssistantButton():
 
             ### music
             elif 'music' in query:
-                music_dir = r'D:\Music'
+                with open(r'C://Desktop Assistant/music_folder_location.txt') as f:
+                    music_dir = f.read()
                 songs = os.listdir(music_dir)
                 song = random.randint(0, len(songs) - 1)
                 print(songs[song])
@@ -120,11 +121,11 @@ def clickOpenApplicationsButton():
     speak('Opening Applications...')
     def OpenAppsActions():
         import subprocess
-        subprocess.Popen(r"C:\Program Files (x86)\Everything\Everything.exe")
-        # subprocess.Popen(r"C:\Users\Siva\AppData\Local\Programs\Microsoft VS Code\Code.exe")
-        # subprocess.Popen(r"D:\Program Files\JetBrains\PyCharm Community Edition 2021.1.2\bin\pycharm64.exe")
-        # subprocess.Popen(r"C:\Program Files (x86)\Notepad++\notepad++.exe")
-        # subprocess.Popen(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
+        with open(r'C://Desktop Assistant/app_exe_locations.txt') as f:
+            lines=f.readlines()
+            lines=[line.strip() for line in lines]
+            for exe_location in lines:
+                subprocess.Popen(exe_location)
     t=threading.Thread(target=OpenAppsActions)
     t.daemon = True
     t.start()
@@ -134,7 +135,8 @@ def clickMusicPlayerButton():
 
     speak('Playing music...')
     def PlayMusicActions():
-        music_dir = r'D:\Music'
+        with open(r'C://Desktop Assistant/music_folder_location.txt') as f:
+              music_dir = f.read()
         songs = os.listdir(music_dir)
         song = random.randint(0, len(songs) - 1)
         print(songs[song])
