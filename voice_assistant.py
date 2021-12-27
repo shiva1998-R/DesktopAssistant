@@ -130,6 +130,19 @@ def clickOpenApplicationsButton():
     t.start()
 
 
+def clickMusicPlayerButton():
+
+    speak('Playing music...')
+    def PlayMusicActions():
+        music_dir = r'D:\Music'
+        songs = os.listdir(music_dir)
+        song = random.randint(0, len(songs) - 1)
+        print(songs[song])
+        speak(f"playing {songs[song]}")
+        os.startfile(os.path.join(music_dir, songs[0]))
+    t=threading.Thread(target=PlayMusicActions)
+    t.daemon = True
+    t.start()
 
 
 
