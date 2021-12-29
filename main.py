@@ -37,25 +37,29 @@ def command():
     """
     Listens to commands
     """
+
     r = sr.Recognizer()
+    i=0
     while True:
         with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source,duration=2)
+            if i==0:
+                r.adjust_for_ambient_noise(source,duration=1)
             speak('Alexa: Listening...')
-            audio=r.listen(source,phrase_time_limit=10)
+            audio=r.listen(source,phrase_time_limit=6)
             try:
                 query = r.recognize_google(audio)
                 speak(f"You said: {query}")
                 return query
             except:
                 speak("Try Again")
+            i+=1
 
-voice_assistant_check=0
+
 def clickVoiceAssistantButton():
-    lbl_info['text']='Voice Assistant Mode: ON'
+    lbl_text.set('Voice Assistant mode: ON')
+    window.update_idletasks()
     def VoiceAssistantButtonActions():
-        global voice_assistant_check
-        voice_assistant_check=1
+
         while True:
             query = command().lower()  ## takes user command
 
@@ -118,7 +122,8 @@ def clickVoiceAssistantButton():
                 os.startfile(os.path.join(music_dir, songs[0]))
 
             elif "exit" in query:
-                voice_assistant_check=0
+                lbl_text.set('Voice Assistant mode: OFF')
+                window.update_idletasks()
                 speak("Have a nice day ! ")
                 break
             else:
@@ -126,10 +131,7 @@ def clickVoiceAssistantButton():
     t=threading.Thread(target=VoiceAssistantButtonActions)
     t.daemon=True
     t.start()
-    while True:
-        if voice_assistant_check==0:
-            lbl_info['text']='Voice Assistant Mode: OFF'
-            break
+
 
 def clickOpenApplicationsButton():
 
@@ -165,8 +167,8 @@ def clickMusicPlayerButton():
 # Information to ask when installing app for first time 
 # - C://Desktop Assistant/music_folder_location.txt
 # C://Desktop Assistant/app_exe_locations.txt
-if os.path.isdir(r'C://Desktop Assistant'):
-    shutil.rmtree(r'C://Desktop Assistant', ignore_errors=True)
+# if os.path.isdir(r'C://Desktop Assistant'): # this was in testing phase
+#     shutil.rmtree(r'C://Desktop Assistant', ignore_errors=True)
 
 if not os.path.isdir(r'C://Desktop Assistant'):
     os.mkdir(r"C://Desktop Assistant")
@@ -262,7 +264,9 @@ btns_frame.rowconfigure(0,weight=1)
 btns_frame.columnconfigure(list(range(3)),weight=1)
 
 # configure label at second row
-lbl_info=tk.Label(master=window,text='Voice Assistant mode: OFF',width=100,height=1)
+lbl_text=tk.StringVar()
+lbl_text.set('Voice Assistant mode: OFF')
+lbl_info=tk.Label(master=window,textvariable=lbl_text,width=100,height=1)
 
 
 # Adding buttons
