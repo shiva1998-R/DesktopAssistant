@@ -21,6 +21,6 @@ Here is a screenshot of the main UI:
 
 
 **Note:**
-If the user wants to add/delete apps to open on clicking "Open Applications" button after the initial installation gets over, he can do so by modifying the file "C://Desktop Assistant/app_exe_locations.txt"
+If the user wants to add/delete the list of apps that open on clicking "Open Applications" button, he can do so by modifying the file "C://Desktop Assistant/app_exe_locations.txt"
 
 Similarly, if the folder location from which music files get picked needs to be changed, he can do so by modifying the file "C://Desktop Assistant/music_location.txt"
