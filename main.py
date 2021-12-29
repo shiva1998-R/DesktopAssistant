@@ -165,8 +165,8 @@ def clickMusicPlayerButton():
 # Information to ask when installing app for first time 
 # - C://Desktop Assistant/music_folder_location.txt
 # C://Desktop Assistant/app_exe_locations.txt
-# if os.path.isdir(r'C://Desktop Assistant'):
-#     shutil.rmtree(r'C://Desktop Assistant', ignore_errors=True)
+if os.path.isdir(r'C://Desktop Assistant'):
+    shutil.rmtree(r'C://Desktop Assistant', ignore_errors=True)
 
 if not os.path.isdir(r'C://Desktop Assistant'):
     os.mkdir(r"C://Desktop Assistant")
