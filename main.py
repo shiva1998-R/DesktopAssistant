@@ -50,9 +50,12 @@ def command():
             except:
                 speak("Try Again")
 
-
+voice_assistant_check=0
 def clickVoiceAssistantButton():
+    lbl_info['text']='Voice Assistant Mode: ON'
     def VoiceAssistantButtonActions():
+        global voice_assistant_check
+        voice_assistant_check=1
         while True:
             query = command().lower()  ## takes user command
 
@@ -115,6 +118,7 @@ def clickVoiceAssistantButton():
                 os.startfile(os.path.join(music_dir, songs[0]))
 
             elif "exit" in query:
+                voice_assistant_check=0
                 speak("Have a nice day ! ")
                 break
             else:
@@ -122,6 +126,10 @@ def clickVoiceAssistantButton():
     t=threading.Thread(target=VoiceAssistantButtonActions)
     t.daemon=True
     t.start()
+    while True:
+        if voice_assistant_check==0:
+            lbl_info['text']='Voice Assistant Mode: OFF'
+            break
 
 def clickOpenApplicationsButton():
 
@@ -245,7 +253,7 @@ window=tk.Tk()
 window.title('Desktop Assistant')
 
 # configuring main window cells properties
-window.rowconfigure(0,minsize=100,weight=1)
+window.rowconfigure(list(range(1)),minsize=100,weight=1)
 window.columnconfigure(0,minsize=200,weight=1)
 
 # configuring buttons frame cells properties
@@ -253,10 +261,14 @@ btns_frame=tk.Frame(master=window,relief=tk.RAISED, bd=3)
 btns_frame.rowconfigure(0,weight=1)
 btns_frame.columnconfigure(list(range(3)),weight=1)
 
+# configure label at second row
+lbl_info=tk.Label(master=window,text='Voice Assistant mode: OFF',width=100,height=1)
+
+
 # Adding buttons
 btn_voice_ass = tk.Button(master=btns_frame,text='Voice Assistant 🎤',command= clickVoiceAssistantButton,font=("TkDefaultFont", 15))
 btn_open_apps=tk.Button(master=btns_frame,text='Open Applications',command= clickOpenApplicationsButton,font=("TkDefaultFont", 15))
-btn_music_player=tk.Button(master=btns_frame,text='Play music',command= clickMusicPlayerButton,font=("TkDefaultFont", 15))
+btn_music_player=tk.Button(master=btns_frame,text='Play music',command= clickMusicPlayerButton,font=("TkDefaultFont", 15),width=14,height=1)
 
 # Placing buttons
 btn_voice_ass.grid(row=0,column=0)
@@ -264,6 +276,7 @@ btn_open_apps.grid(row=0,column=1)
 btn_music_player.grid(row=0,column=2)
 # Placing frame
 btns_frame.grid(row=0, column=0,sticky='nsew')
+lbl_info.place(anchor='se',relx=1.0,rely=1.0)
 
 # starting mainloop
 height=400
