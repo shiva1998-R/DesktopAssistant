@@ -5,9 +5,6 @@ import os.path
 from tkinter.filedialog import askdirectory, askopenfile, askopenfilename
 
 # voice assistant module
-from tkinter import *
-from sys import exit
-
 import pyttsx3
 import speech_recognition as sr
 import wikipedia
@@ -270,11 +267,11 @@ lbl_info=tk.Label(master=window,textvariable=lbl_text,width=100,height=1)
 
 
 # Adding buttons
-btn_voice_ass = tk.Button(master=btns_frame,text='Voice Assistant 🎤',command= clickVoiceAssistantButton,font=("TkDefaultFont", 15),bg='GREEN')
+btn_voice_ass = tk.Button(master=btns_frame,text='Voice Assistant 🎤',command= clickVoiceAssistantButton,font=("TkDefaultFont", 15))
 btn_open_apps=tk.Button(master=btns_frame,text='Open Applications',command= clickOpenApplicationsButton,font=("TkDefaultFont", 15))
 btn_music_player=tk.Button(master=btns_frame,text='Play music',command= clickMusicPlayerButton,font=("TkDefaultFont", 15),width=14,height=1)
 
-# Placing buttons
+# Placing buttonsX
 btn_voice_ass.grid(row=0,column=0)
 btn_open_apps.grid(row=0,column=1)
 btn_music_player.grid(row=0,column=2)
