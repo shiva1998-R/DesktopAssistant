@@ -24,3 +24,9 @@ Here is a screenshot of the main UI:
 If the user wants to add/delete the list of apps that open on clicking "Open Applications" button, he can do so by modifying the file "C://Desktop Assistant/app_exe_locations.txt"
 
 Similarly, if the folder location from which music files get picked needs to be changed, he can do so by modifying the file "C://Desktop Assistant/music_location.txt"
+
+
+To install python dependencies, use
+```
+pip install -r requirements.txt
+```
