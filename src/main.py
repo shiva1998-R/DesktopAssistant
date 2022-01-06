@@ -155,7 +155,7 @@ def clickMusicPlayerButton():
         song = random.randint(0, len(songs) - 1)
         print(songs[song])
         speak(f"playing {songs[song]}")
-        os.startfile(os.path.join(music_dir, songs[0]))
+        os.startfile(os.path.join(music_dir, songs[song]))
     t=threading.Thread(target=PlayMusicActions)
     t.daemon = True
     t.start()
