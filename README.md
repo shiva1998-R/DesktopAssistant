@@ -1,6 +1,6 @@
 # DesktopAssistant
 
-This is a desktop assistant project the following features:
+This is a desktop assistant project with the following features:
 - Voice Assistant
 - Opening multiple desktop applications in one click
 - Play music from local folders
