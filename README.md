@@ -5,17 +5,18 @@ This is a desktop assistant project with the following features:
 - Opening multiple desktop applications in one click
 - Play music from local folders
 
-Voice assistant feature interacts with the user to provide responses to the requests user queries. This may include news, jokes, music, wikipedia information about a famous personality etc., Saying "exit" with quit the Voice Assistant.
+Voice assistant feature interacts with the user to provide responses to the requests user queries. This may include news, jokes, music, wikipedia information about a famous personality etc., Saying "exit" will quit the Voice Assistant.
 
 
 **How to run the app locally?**
-Run src/main.py python file to start the app. To install python dependencies in your local system, use
+
+First install python dependencies in your local system, use
 ```
 pip install -r requirements.txt
 ```
+Then run src/main.py python file to start the app.
 
-
-When user runs app for the first time, the program asks for location of music files and app executables in the filesystem. These get stored at "C://Desktop Assistant/" folder, so that the app can use from next time onwards.
+When user runs app for the first time, the program asks for location of music files and app executables in the filesystem. These paths get stored at "C://Desktop Assistant/" folder, so that the app can use from next time onwards.
 Here are some screenshots of the app asking for those locations:
 
 ![app](./assets/music_location.png)
