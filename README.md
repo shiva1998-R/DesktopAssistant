@@ -10,7 +10,7 @@ Voice assistant feature interacts with the user to provide responses to the requ
 
 **How to run the app locally?**
 
-First install python dependencies in your local system, use
+First install python dependencies in your local system using
 ```
 pip install -r requirements.txt
 ```
